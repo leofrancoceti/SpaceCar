@@ -1,0 +1,31 @@
+@startuml SpaceCar
+
+class Juego
+class Jugador
+
+class Habilidad
+class Velocidad
+class Control
+class PowerUp
+class Item
+
+class Carro
+class Obstaculo
+class Pista
+
+Juego "1" *-- "1" Jugador
+Jugador "1" o-- "1" Carro
+Carro "1" *-- "1" Habilidad
+Carro "1" *-- "1" Control
+
+Carro --|> Item
+PowerUp --|> Item
+Obstaculo --|> Item
+
+PowerUp --|> Habilidad
+Velocidad --|> Habilidad
+Control --|> Habilidad
+
+Pista -- Obstaculo
+
+@enduml
