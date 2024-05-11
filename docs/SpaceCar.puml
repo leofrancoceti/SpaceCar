@@ -26,7 +26,6 @@ class Obstaculo{
 }
 class Pista
 
-class Nino
 
 Juego "1" *-- "1" Jugador
 Jugador "1" o-- "1" Carro
@@ -41,7 +40,7 @@ PowerUp --|> Habilidad
 Manejo --|> Habilidad
 Velocidad --|> Habilidad
 
-Pista -- Obstaculo
+Pista *-- Obstaculo
 
 
 @enduml

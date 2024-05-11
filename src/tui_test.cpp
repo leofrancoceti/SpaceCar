@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 {
     list<string> textos;
     fstream imagen;
-    imagen.open("./assets/imagen.txt");
+    imagen.open("./assets/Carro.txt");
 
     string linea;
     while (getline(imagen,linea))
