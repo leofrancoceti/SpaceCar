@@ -26,6 +26,8 @@ class Obstaculo{
 }
 class Pista
 
+class Nino
+
 Juego "1" *-- "1" Jugador
 Jugador "1" o-- "1" Carro
 Carro "1" *-- "1" Habilidad
