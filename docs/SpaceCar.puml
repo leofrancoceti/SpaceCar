@@ -1,46 +1,70 @@
 @startuml SpaceCar
 
+class Obstaculo{
+    -posX
+    -posY
+    +Aparecer()
+    +Colisionar()
+}
+class Caja
+class Charco
+
+
 class Juego{
     + Comenzar()
-    - Terminar()
+    + Terminar()
 }
-class Jugador
-class Habilidad
+class Partida{
+    + Tiempo : float
+    + Iniciar()
+    + Perder()
+
+}
+class Vida{
+    + Restablecer()
+}
+class Puntuacion{
+    + Tiempo : float
+    + Acumular()
+    + Restablecer()
+    + GuardarPuntuacion()
+
+}
+class Jugador{
+    + Jugar()
+}
 
 class Velocidad{
     + Alta()
-    + Baja
+    + Baja()
 }
-class Manejo
-
-class PowerUp
-class Item
 
 class Carro{
-    + Ariiba()
-    + Abajo()
+    + posX()
+    + posY()
+    + MoverArriba()
+    + MoverAbajo()
+    + Colisionar()
+    + Aparecer()
 }
-class Obstaculo{
-    + Señal()
-    + Punto()
+class Colisionable{
+    +DetectarColision()
 }
-class Pista
 
 
 Juego "1" *-- "1" Jugador
+Juego "1" *-- "1" Partida 
+
 Jugador "1" o-- "1" Carro
-Carro "1" *-- "1" Habilidad
-Carro "1" *-- "1" Control
+Jugador "1" *-- "1" Vida
+Jugador "1" *-- "1" Puntuacion
 
-Carro --|> Item
-PowerUp --|> Item
-Obstaculo --|> Item
+Partida "1" *-- "*" Obstaculo
 
-PowerUp --|> Habilidad
-Manejo --|> Habilidad
-Velocidad --|> Habilidad
+Charco --|> Obstaculo
+Caja --|> Obstaculo
 
-Pista *-- Obstaculo
-
+Obstaculo --|> Colisionable
+Carro --|> Colisionable
 
 @enduml
