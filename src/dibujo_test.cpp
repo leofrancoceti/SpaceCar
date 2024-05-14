@@ -37,17 +37,16 @@ int main(int argc, char const *argv[])
     }
     imagen2.close();
 
-    int posX = 130;
+    int posX = 2;
     int posY = 8;
 
-    int posX_C = 0;
+    int posX_C = 130;
     int posY_C = 8;
 
     int fotograma = 0;
     string reset;
 
     int AltoI = 22;
-
 
     while (true)
     {
@@ -74,10 +73,10 @@ int main(int argc, char const *argv[])
         Render(pantalla, dibujo);
 
         int l = 0;
-        for (auto &&texto2 : textos2)
+        for (auto &&texto : textos)
         {
             int i = 0;
-            for (auto &&letra : texto2)
+            for (auto &&letra : texto)
             {
                 pantalla.PixelAt(posX - i, posY - l).character = letra;
                 i--;
@@ -85,22 +84,22 @@ int main(int argc, char const *argv[])
             l--;
         }
 
-        posX--;
         pantalla.Print();
 
         int x = 0;
-        for (auto &&texto : textos)
+        for (auto &&texto2 : textos2)
         {
-            int y = 0;
-            for (auto &&letra2 : texto)
+            int y = 0; // Reiniciar y para cada nueva línea de texto.
+            for (auto &&letra2 : texto2)
             {
                 pantalla.PixelAt(posX_C + x, posY_C + y).character = letra2;
-                y++;
+                y++; // Incrementar solo x en cada iteración del bucle interno.
             }
             x++;
         }
-        pantalla.Print();
 
+        posX_C --;
+        pantalla.Print();
 
         // Resetear pantalla
         reset = pantalla.ResetPosition();
