@@ -1,36 +1,41 @@
-@startuml Pintor
+@startuml
 
 class Dibujo{
-    -linea
-    -posicion : Vector
-    -velocidad : Vector
-    -estilo : Estilo
-    +AgregarLinea()
+    - lineas : list<string>
+    - posicion : Vector
+    - velocidad : Vector
+    - estilo : Estilo
+    + AgregarLinea()
 }
+
 class Vector{
-    -posX
-    -posY
+    - posX
+    - posY
 }
+
 class Archivo{
-    -Directorio : string
-    +Leer(Dibujo)
-    +LeerDibujo(Dibujo)
-    +LeerAnimacion(Animacion)
+    -directorio : string
+    + LeerDibujo(Dibujo)
+    + LeerAnimacion(Animacion)
+    
 }
+
 class Estilo{
-    -ColorFondo
-    -ColorTexto
+    - colorFondo
+    - colorTexto
 }
 
 class Animacion{
-    -fotograma : List<Dibujo>
-    -fotogramaActual : int
+    - fotogramas : list<Dibujo>
+    - fotogramaActual : int
 }
+
 class Lienzo{
-    -dibujo : list<dibujo>
-    +pintar()
-    +AgregarDibujo
+    - dibujos : list<Dibujo>
+    + Pintar()
+    + AgregarDibujo(Dibujo)
 }
+
 
 Dibujo *-- Vector
 Archivo o-- Dibujo
