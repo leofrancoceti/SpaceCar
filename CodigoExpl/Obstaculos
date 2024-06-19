@@ -1,0 +1,45 @@
+//Nani este es para los obstaculos y esta explicado lo que hice en cada cosa 
+
+//Paso 1 Baby:
+ShowWindow(GetConsoleWindow(), SW_HIDE);: Oculta la consola de comandos que se abre al ejecutar el programa.
+//Paso 2
+sf::RenderWindow window(...): Crea una ventana de 800x600 píxeles con el título "Car Racing Arcade".
+window.setFramerateLimit(60);: Establece el límite de fotogramas por segundo a 60 para mantener una animación suave.
+
+//Paso3
+sf::Texture textureCar;: Declara una textura para el auto del jugador.
+textureCar.loadFromFile(...): Carga la imagen del auto del jugador desde el archivo especificado. Si falla, el programa termina con un código de error -1.
+//Paso 4
+sf::Sprite spriteCar;: Declara un sprite para el auto del jugador.
+spriteCar.setTexture(textureCar);: Asigna la textura cargada al sprite del auto del jugador.
+spriteCar.setPosition(400, 500);: Establece la posición inicial del auto del jugador en la parte inferior central de la ventana.
+
+//Paso5
+speed: Velocidad de movimiento del auto del jugador.
+obstacleSpeed: Velocidad a la que se mueve el obstáculo hacia abajo.
+
+//Paso6
+while (window.isOpen()): Bucle principal del juego que continúa mientras la ventana esté abierta.
+window.pollEvent(event): Procesa eventos de la ventana, como el cierre de la ventana.
+window.close();: Cierra la ventana si se detecta un evento de cierre
+
+//Paso7
+sf::Keyboard::isKeyPressed(...): Comprueba si se presionan las teclas de flecha izquierda o derecha.
+spriteCar.move(...): Mueve el auto del jugador a la izquierda o a la derecha, limitando el movimiento para que no salga de la pantalla.
+
+//Pso8
+spriteObstacle.move(0, obstacleSpeed);: Mueve el obstáculo hacia abajo a una velocidad constante.
+spriteObstacle.setPosition(...): Si el obstáculo sale de la pantalla por la parte inferior, reaparece en una posición aleatoria en la parte superior.
+
+//p9
+spriteCar.getGlobalBounds().intersects(...): Comprueba si los límites del auto del jugador se intersectan con los del obstáculo.
+window.close();: Cierra la ventana si hay una colisión, terminando el juego.
+
+//Paso10
+window.clear();: Limpia la ventana antes de dibujar los nuevos fotogramas.
+window.draw(...);: Dibuja el auto del jugador y el obstáculo en la ventana.
+window.display();: Muestra el contenido dibujado en la ventana.
+
+
+//Nani aqui puse funcionalidad de los carros en osbtaculo junto al movimiento del carro rojo
+Configura una ventana de juego, carga texturas para un auto de jugador y un obstáculo, y maneja el movimiento del auto y del obstáculo

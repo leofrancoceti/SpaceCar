@@ -1,12 +1,20 @@
 # SpaceCar
 ![Portada SpaceCar](https://media.istockphoto.com/id/1458751063/es/v%C3%ADdeo/video-animado-de-un-viejo-juego-de-carreras-de-autos-en-estilo-de-8-bits-arcade-pixel-arte-2d.jpg?s=256x256&k=20&c=4nPw4tbcSQUcgEGgQPnJlvN_M_QtPhKdN-oDUs__0fU=)
 ___
-El proyecto tiene como objetivo desarrollar un videojuego basado en texto, utilizando arte ASCII, que tomamos de inspiracion de los ya clasicos juegos de autos arcade.
+# Integrantes 
+* Leonardo Franco Pérez_23110186
+* Leonel Salvador Gonzalez Hernadez_23110177
 
-* Implementar un sistema de juego que permita al jugador controlar un aautomovil y con este poder esquivar diferentes obstaculos que se encontrara en el camino.
-* Diseñar este juego de tal manera que mediante el jugador vaya progrsando en tiempo este sea mas rapido y mas complicado.
-* Agregar diferentes obstaculos al jugador para que este tenga que mejorar sus ahabilidades en este juego si es que quiere romper su marca personal.
+# Objetivos 
 
+* Crear un videojuego arcade en lenguaje c++.
+
+* Dominar el uso de la biblioteca SFML para manejar gráficos, sonido y eventos en juegos.
+
+# Objetivos espesificos
+   
+ * En el juego Spacecar se tiene como objetivo espesfico que el carro conduzca por cierto espacio y recorra los obstaculos en este caso los demas autos y tener la mejor puntuación
+  
 ## **Carpetas**
 ___
 El proyecto sigue una estructura organizada en varias carpetas para una gestión eficiente de los archivos y recursos del juego.
@@ -21,41 +29,62 @@ El proyecto sigue una estructura organizada en varias carpetas para una gestión
 
 * README.md: Un archivo de markdown que proporciona una descripción general del proyecto, instrucciones de instalación, ejecución y cualquier otra información relevante.
 
-## **Desarrollo**
+## **Caracteristicas **
 ___
-El juego se desarrollará utilizando C++ junto con la biblioteca FTXUI para crear la interfaz de usuario basada en texto. Se implementará la mecánica principal del los juegos arcade, que en estos esta principalmente el movimiento en 2D del jugador,  la aparición de obstaculos como cajas y charcos de aceite, así como la lógica de colisiones.
+"Racing Car de Arcade" es un juego de carreras en 2D, inspirado en los clásicos juegos de arcade de los años 80 y 90. El jugador controla un coche de carreras que se desplaza por una pista infinita llena de obstáculos y otros vehículos. El objetivo principal es esquivar los obstáculos y coches, y sobrevivir el mayor tiempo posible mientras se incrementa la velocidad y la dificultad del juego.
 
-La representación visual del juego se realizará utilizando arte ASCII, con archivos de texto dedicados para el auto del jugador, la pista y los obstaculos. 
+# Jugabilidad 
+Iniciar el Juego:
+
+*Ejecuta el juego desde tu computadora y selecciona "Start Game" en la pantalla de inicio.
+
+*Controles:
+Mover a la Izquierda: Presiona la tecla de flecha izquierda.
+Mover a la Derecha: Presiona la tecla de flecha derecha.
+Objetivo:
+
+*Evita chocar con otros vehículos y obstáculos en la pista.
+
+*Sobrevive el mayor tiempo posible mientras la velocidad aumenta gradualmente.
+Puntaje:
+
+*Tu puntaje aumenta en función del tiempo que logres mantenerte en la pista sin colisionar.
 
 # Dependencias
 
-## **GraphViz**
-___
-~~~
-sudo apt update
+## **Visual Studio Code**
+Se puede descargar en el siguiente enlace.
 
-sudo apt install graphviz
-~~~
+## **Github Desktop**
+Se puede descargar en el siguiente enlace.
 
-## **FTXUI**
-___
-~~~
-git clone [link:]https://github.com/ArthurSonzogni/FTXUI.git
-sudo apt install cmake
-cd FTXUI
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
-~~~
+## **Git**
+Para poder realizar commits de vscode es necesario tener instalado Git, descargarlo del siguiente enlace.
+
+## **MSYS2 (Windows)**
+Instalar Msys2 usando el siguiente enlace.
+
+No modificar ninguna opcion al momento de la instalacion para evitar errores.
+
+*Una vez instalado es necesario agregar los siguientes directorios al path de windows y reiniciar.
+
+C:\msys64\mingw64\bin
+
+C:\msys64\usr\bin
+
+# Librerias 
+## **MSYS2**
+
+*DevTools
+pacman -S --needed base-devel mingw-w64-x86_64-toolchain
+
+*SFML
+pacman -S mingw-w64-x86_64-sfml
 
 ## **Plugins VSCode**
 ___
 
-* material icon
-* c/c++
-* plant uml
-* cmake
-* cmake tools
-* make file tools
+*Material Icon
+*C/C++
+*PlantUML
+*GitGraph
