@@ -3,3 +3,5 @@ bin/draw : src/main.cpp
 
 run : bin/draw
 	./bin/draw
+
+	
