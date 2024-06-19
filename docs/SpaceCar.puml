@@ -1,63 +1,93 @@
 @startuml SpaceCar
 
-class Obstaculo{
-    -posX
-    -posY
-    +Aparecer()
-    +Colisionar()
+class Obstaculo {
+    -texture : sf::Texture
+    -sprite : sf::Sprite
+    -buffer : sf::SoundBuffer
+    -crashSound : sf::Sound
+    -hitCount : int
+    -scaleX : float
+    -scaleY : float
+    +Obstaculo(float posX = 0.f, float posY = 0.f)
+    +~Obstaculo()
+    +playCrashSound()
+    +takeHit()
+    +getHitCount() const : int
+    +getSprite() : sf::Sprite&
 }
+
 class Caja
 class Charco
 
-
-class Juego{
-    + Comenzar()
-    + Terminar()
-}
-class Partida{
-    + Tiempo : float
-    + Iniciar()
-    + Perder()
-
-}
-class Vida{
-    + Restablecer()
-}
-class Puntuacion{
-    + Tiempo : float
-    + Acumular()
-    + Restablecer()
-    + GuardarPuntuacion()
-
-}
-class Jugador{
-    + Jugar()
+class Juego {
+    -window : sf::RenderWindow*
+    -jugador : Jugador*
+    -obstaculos : std::vector<Obstaculo>
+    -puntaje : Puntaje*
+    +Juego()
+    +~Juego()
+    +update()
+    +render()
+    +run()
 }
 
-class Velocidad{
-    + Alta()
-    + Baja()
+class Jugador {
+    +Jugador(float posX, float posY)
+    +update(sf::RenderWindow* window)
+    +render(sf::RenderWindow* target)
+    +getBounds() const : sf::FloatRect
 }
 
-class Carro{
-    + posX()
-    + posY()
-    + MoverArriba()
-    + MoverAbajo()
-    + Colisionar()
-    + Aparecer()
+class Carro {
+    -carro : sf::Sprite
+    -texture : sf::Texture
+    -speed : double
+    +Carro(bool isPlayer, float posX, float posY)
+    +update(sf::RenderWindow* window)
+    +render(sf::RenderWindow* target)
+    +getBounds() const : sf::FloatRect
 }
-class Colisionable{
+
+class Puntaje {
+    -font : sf::Font
+    -puntajeText : sf::Text
+    -puntaje : int
+    +Puntaje()
+    +~Puntaje()
+    +aggPuntuacion(int puntos)
+    +updateText()
+    +draw(sf::RenderWindow &window)
+    +getPuntaje() const : int
+    +resetPuntaje()
+}
+
+class Vida {
+    +Restablecer()
+}
+
+class Partida {
+    +tiempo : float
+    +Iniciar()
+    +Perder()
+}
+
+class Velocidad {
+    +Alta()
+    +Baja()
+}
+
+class Colisionable {
     +DetectarColision()
 }
 
-
 Juego "1" *-- "1" Jugador
 Juego "1" *-- "1" Partida 
+Juego "1" *-- "1" Puntaje
+Juego "1" *-- "*" Obstaculo
 
 Jugador "1" o-- "1" Carro
 Jugador "1" *-- "1" Vida
-Jugador "1" *-- "1" Puntuacion
+Jugador "1" *-- "1" Puntaje
 
 Partida "1" *-- "*" Obstaculo
 
