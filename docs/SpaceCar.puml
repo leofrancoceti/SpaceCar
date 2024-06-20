@@ -1,14 +1,6 @@
 @startuml SpaceCar
 
 class Obstaculo {
-    -texture : sf::Texture
-    -sprite : sf::Sprite
-    -buffer : sf::SoundBuffer
-    -crashSound : sf::Sound
-    -hitCount : int
-    -scaleX : float
-    -scaleY : float
-    +Obstaculo(float posX = 0.f, float posY = 0.f)
     +~Obstaculo()
     +playCrashSound()
     +takeHit()
@@ -34,8 +26,7 @@ class Juego {
 class Jugador {
     +Jugador(float posX, float posY)
     +update(sf::RenderWindow* window)
-    +render(sf::RenderWindow* target)
-    +getBounds() const : sf::FloatRect
+
 }
 
 class Carro {
@@ -44,13 +35,10 @@ class Carro {
     -speed : double
     +Carro(bool isPlayer, float posX, float posY)
     +update(sf::RenderWindow* window)
-    +render(sf::RenderWindow* target)
-    +getBounds() const : sf::FloatRect
+    
 }
 
 class Puntaje {
-    -font : sf::Font
-    -puntajeText : sf::Text
     -puntaje : int
     +Puntaje()
     +~Puntaje()
