@@ -1,35 +1,36 @@
-bin/draw : src/main.cpp
-	g++ src/main.cpp -o bin/draw -I include -l ftxui-screen -l ftxui-dom -l ftxui-component -std=c++2a
+# Nombre del compilador
+CXX = g++
 
-run : bin/draw
-	./bin/draw
+# Directorios de los archivos de encabezado y las bibliotecas
+INCLUDE_DIR = /mingw64/include
+LIB_DIR = /mingw64/lib
 
-	# Directorios de origen y destino
-SRC_DIR := src
-BIN_DIR := bin
+# Archivos de origen
+SRC = src/main.cpp \
+        src/Obstaculo/obstaculo1.cpp \
+        src/Obstaculo/obstaculo2.cpp \
+        src/Obstaculo/obstaculo3.cpp \
+		src/Obstaculos/Aceite.cpp \
+		src/Obstaculos/Ambulance.cpp \
+		src/Obstaculos/Señal.cpp \
+        src/UISound.cpp
 
-SFML := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lbox2d
+# Nombre del ejecutable
+TARGET = Game
 
-# Obtener todos los archivos .cpp en el directorio de origen
-CPP_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+# Flags de compilación y enlace
+CXXFLAGS = -I$(INCLUDE_DIR)
+LDFLAGS = -L$(LIB_DIR) -lsfml-graphics -lsfml-system -lsfml-window -lsfml-audio
 
-# Generar los nombres de los archivos .exe en el directorio de destino
-EXE_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(BIN_DIR)/%.exe,$(CPP_FILES))
+# Regla por defecto
+all: $(TARGET)
 
-	# Regla para compilar cada archivo .cpp y generar el archivo .exe correspondiente
-$(BIN_DIR)/%.exe: $(SRC_DIR)/%.cpp include/Game.hpp include/Carro.hpp include/Main.hpp include/Obstaculo.hpp include/Jugadorhpp include/Puntaje.hpp 
-	g++ $< -o $@ $(SFML) -Iinclude
-# Regla por defecto para compilar todos los archivos .cpp
-all: $(EXE_FILES)
-
-# Regla para ejecutar cada archivo .exe
-run%: $(BIN_DIR)/%.exe
-	./$<
+# Regla para compilar el ejecutable
+$(TARGET): $(SRC)
+    $(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 # Regla para limpiar los archivos generados
 clean:
-	rm -f $(EXE_FILES)
+    rm -f $(TARGET)
 
 .PHONY: all clean
-.PHONY: run-%
-	
